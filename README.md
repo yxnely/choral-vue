@@ -16,6 +16,9 @@ With Choral, I'd like to achieve a functioning app using Vue.js, Express.js, Nod
 
 ## Run Locally
 Clone this repo with `git clone https://github.com/yxnely/choral-vue.git`
+
 Run `npm install`
+
 Run `npm start`
+
 You're good to go!
