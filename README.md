@@ -19,6 +19,6 @@ Clone this repo with `git clone https://github.com/yxnely/choral-vue.git`
 
 Run `npm install`
 
-Run `npm start`
+Run `npm start dev`
 
-You're good to go!
+You're good to start playing around in the dev environment!
