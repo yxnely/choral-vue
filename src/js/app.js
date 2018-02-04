@@ -22,15 +22,5 @@ new Vue({
 		})
 	},
 	methods: {
-		// searchArticle: function () {
-		// 	var app = this
-		// 	var searchUrl = `${url}?api-key=${app.api_key}&q=${app.article_search}`;
-
-		// 	fetch(searchUrl)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		app.articles = res.response.docs
-		// 	})
-		// }
 	}
 });

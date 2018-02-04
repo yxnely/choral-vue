@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const sass = require('node-sass');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -18,12 +19,13 @@ if (env === 'production') {
 	const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 	plugins.push(new UglifyJsPlugin({ minimize: true }));
-	plugins.push(new webpack.DefinePlugin({
-		'process.env': {
-			NODE_ENV: '"production"'
+	plugins.push(new webpack.DefinePlugin(
+		{
+			'process.env': {
+				NODE_ENV: '"production"'
+			}
 		}
-	}
-  ));
+	));
 
 	appName = appName + '.min.js';
 } else {
@@ -31,9 +33,7 @@ if (env === 'production') {
 }
 
 module.exports = {
-	entry: {
-		main: [path.join(paths.JS, 'app.js'),'webpack-hot-middleware/client?reload=true']
-	},
+	entry: path.join(paths.JS, 'app.js'),
 	output: {
 		path: paths.DIST,
 		filename: appName,
@@ -45,7 +45,11 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.join(paths.SRC, 'index.html'),
 		}),
-		new ExtractTextPlugin('style.bundle.css'),
+		new ExtractTextPlugin({
+			filename: "app.bundle.css",
+			disable: process.env.NODE_ENV === "development"
+		}),
+		require('autoprefixer'),
 		...plugins,
 	],
 	module: {
@@ -61,11 +65,23 @@ module.exports = {
 				test: /\.vue$/,
 				loader: 'vue-loader',
 			},
+			{
+				test: /\.scss$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "sass-loader"
+				}, {
+					loader: 'postcss-loader',
+				}]
+			},
 		],
 		loaders: [
 			{
-			  test: /\.vue$/,
-			  loader: 'vue'
+				test: /\.vue$/,
+				loader: 'vue',
 			}, 
 			{
 				test: /\.s[a|c]ss$/,
@@ -77,6 +93,6 @@ module.exports = {
 		extensions: ['.js'],
 		alias: {
 			'vue$': 'vue/dist/vue.esm.js'
-		}
-	},
+		},
+	}
 };
