@@ -4,14 +4,22 @@
   "description": "The project \"Choral\", but remade with Vue.js",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "vue"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yxnely/choral-vue.git"
+  },
   "author": "Yanely Ramirez",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^3.10.0"
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }
