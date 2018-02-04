@@ -31,12 +31,18 @@ if (env === 'production') {
 }
 
 module.exports = {
-	entry: path.join(paths.JS, 'app.js'),
+	entry: [
+		path.join(paths.JS, 'app.js'),
+		'webpack-hot-middleware/client'
+	],
 	output: {
 		path: paths.DIST,
 		filename: appName,
 	},
 	plugins: [
+		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(paths.SRC, 'index.html'),
 		}),
@@ -55,7 +61,7 @@ module.exports = {
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
-			  },
+			},
 		],
 		loaders: [
 			{
