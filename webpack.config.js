@@ -31,10 +31,9 @@ if (env === 'production') {
 }
 
 module.exports = {
-	entry: [
-		path.join(paths.JS, 'app.js'),
-		'webpack-hot-middleware/client'
-	],
+	entry: {
+		main: [path.join(paths.JS, 'app.js'),'webpack-hot-middleware/client?reload=true']
+	},
 	output: {
 		path: paths.DIST,
 		filename: appName,

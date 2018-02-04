@@ -37,9 +37,10 @@ const expressVueMiddleware = expressVue.init(vueOptions);
 
 app.use(expressVueMiddleware);
 app.use(require("webpack-dev-middleware")(compiler, {
-    noInfo: true, publicPath: webpackConfig.output.publicPath
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    reload: true,
 }));
-app.use(require("webpack-hot-middleware")(compiler));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 app.get('/', (req, res, next) => {
