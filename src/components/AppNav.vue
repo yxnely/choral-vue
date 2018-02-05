@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <router-link to="/" class="navbar-brand">Home</router-link>
         </div>
-        <div class="dropdown pull-xs-right nav navbar-nav navbar-right">
+        <!-- <div class="dropdown pull-xs-right nav navbar-nav navbar-right">
             <button class="btn bmd-btn-icon dropdown-toggle" type="button" id="lr1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">menu</i>
             </button>
@@ -14,7 +14,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
             </div>
-        </div>
+        </div> -->
     </nav>
 </template>
 
