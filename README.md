@@ -1,5 +1,6 @@
 # Choral
-> This project was built with 
+> This project was built with vue-cli
+
 The project "Choral", but remade with Vue.js
 
 ## Idea
