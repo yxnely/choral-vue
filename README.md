@@ -7,6 +7,9 @@ Movie View is an application that lets you see a list of movies by most recent. 
 ## API
 Movie-View uses both the The Movie Reviews API (NY Times) and the IMDB API
 
+## Design
+I am using the power of Bootstrap & Material Design to accomplish the design that I like, later I will definitely be adding my own style, just right now I'd like to focus on learning Vue.js :)
+
 ## Tech Deets
 With Movie View, I'd like to achieve a functioning app using Vue.js, Node.js, and Webpack.
 
