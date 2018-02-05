@@ -39,4 +39,4 @@ You're good to start playing around in the dev environment!
 
 ## Current State
 ![Screenshot of Movie View]
-(https://raw.githubusercontent.com/yxnely/movie-vue/master/src/assets/src/assets/movie-screenshot-feb-4.png)
+(https://raw.githubusercontent.com/yxnely/movie-vue/starter/src/assets/movie-screenshot-feb-4.png)
