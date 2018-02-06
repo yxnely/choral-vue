@@ -4,18 +4,21 @@
             <app-nav></app-nav>
             <h1 class="text-center mt-2">Movies</h1>
         </div>
-        <b-container fluid>
+        <b-container>
             <b-row>
-                <div class="col-sm-4" v-for="(movie, index) in movies">
-                    <div>
-                        <b-card class="mb-4" 
-                            v-bind:title="movie.display_title"
-                            v-bind:sub-title="movie.opening_date | formatDate"
-                        >
-                            <b-button>View More</b-button>
-                        </b-card>
-                    </div>
-                </div>
+                <b-col v-for="(movie, index) in movies"
+                        v-bind:data="movie"
+                        v-bind:key="index"
+                        sm="12"
+                        cols="12"
+                        md="6"
+                        lg="4">
+                    <b-card class="mb-4" 
+                        v-bind:title="movie.display_title"
+                        v-bind:sub-title="movie.opening_date | formatDate">
+                        <b-button variant="outline-secondary">View More</b-button>
+                    </b-card>
+                </b-col>
             </b-row>
         </b-container>
     </div>
@@ -33,6 +36,7 @@
     Vue.use(Layout);
 
     Vue.component('b-row')
+    Vue.component('b-col')
     Vue.component('b-card')
     Vue.component('b-button')
     Vue.component('b-container')
