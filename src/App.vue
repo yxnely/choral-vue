@@ -11,7 +11,8 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-}
+  a,
+  button {
+    color: #261447;
+  }
 </style>
