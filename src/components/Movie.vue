@@ -4,25 +4,20 @@
             <app-nav></app-nav>
             <h1 class="text-center mt-2">Movies</h1>
         </div>
-        <div class="container">
-            <div class="row">
+        <b-container fluid>
+            <b-row>
                 <div class="col-sm-4" v-for="(movie, index) in movies">
-                        <div>
-                            <b-card title="Card Title" class="mb-4">
-                                <b-button href="#" variant="primary">Go somewhere</b-button>
-                            </b-card>
-                        </div>
-                    <!-- <b-card>
-                            <div class="card-header">{{ movie.mpaa_rating | rating }}</div>
-                        <div class="card-body">
-                            <h2 class="card-title">{{ movie.display_title }}</h2>
-                            <h5 class="card-subtitle mb-2 text-muted">{{ movie.opening_date | formatDate }}</h5>
-                            <button class="btn btn-primary">View More</button>
-                        </div>
-                    </div> -->
+                    <div>
+                        <b-card class="mb-4" 
+                            v-bind:title="movie.display_title"
+                            v-bind:sub-title="movie.opening_date | formatDate"
+                        >
+                            <b-button>View More</b-button>
+                        </b-card>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </b-row>
+        </b-container>
     </div>
 </template>
 
@@ -31,10 +26,16 @@
     import moment from 'moment';
     import AppNav from './AppNav';
     import { getMovies } from '../../utils/movies-api';
-    import { Card, Button } from 'bootstrap-vue/es/components';
+    import { Card, Button, Layout } from 'bootstrap-vue/es/components';
 
-    Vue.use(Card);
-    Vue.use(Button);
+    Vue.use(Card)
+    Vue.use(Button)
+    Vue.use(Layout);
+
+    Vue.component('b-row')
+    Vue.component('b-card')
+    Vue.component('b-button')
+    Vue.component('b-container')
 
     export default {
         name: 'movies',
@@ -48,7 +49,7 @@
         },
         filters: {
             capitalize: text => text.toLowerCase(),
-            formatDate: date => date !== null ? moment(date).format('MMM D, YYYY') : 'N/A',
+            formatDate: date => date !== null ? moment(date).format('MMM D, YYYY') : '-',
             rating: rate => rate !== '' ? rate : 'N/A',
         },
         methods: {
