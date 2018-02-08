@@ -5,6 +5,9 @@
             <h1 class="text-center mt-2">Movies</h1>
         </div>
         <b-container>
+            <b-form-select v-model="selected" :options="options" class="mb-3" />
+        </b-container>
+        <b-container>
             <b-row>
                 <b-col v-for="(movie, index) in movies"
                         v-bind:data="movie"
@@ -29,26 +32,24 @@
     import moment from 'moment';
     import AppNav from './AppNav';
     import { getMovies } from '../../utils/movies-api';
-    import { Card, Button, Layout } from 'bootstrap-vue/es/components';
-
-    Vue.use(Card)
-    Vue.use(Button)
-    Vue.use(Layout);
-
-    Vue.component('b-row')
-    Vue.component('b-col')
-    Vue.component('b-card')
-    Vue.component('b-button')
-    Vue.component('b-container')
+    import { FormSelect, Card, Button, Layout } from 'bootstrap-vue/es/components';
 
     export default {
         name: 'movies',
         components: {
+            FormSelect,
             AppNav,
+            Button,
+            Layout,
+            Card,
         },
         data() {
             return {
                 movies: '',
+                selected: null,
+                options: [
+                    //
+                ]
             };
         },
         filters: {
