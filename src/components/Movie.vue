@@ -48,6 +48,11 @@
     p { margin: 0; }
     h2 { font-weight: bold; }
 
+    .card-title {
+        font-weight: 400 !important;
+        margin-bottom: 20px !important;
+    }
+
     .modal-header {
         padding: 10px 20px 0 !important;
     }
