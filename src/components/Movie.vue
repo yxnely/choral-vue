@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<div>
-				<app-nav></app-nav>
-				<h1 class="text-center mt-2">Movies</h1>
+            <app-nav></app-nav>
+            <h1 class="text-center mt-2">Movies</h1>
 		</div>
 		<b-container>
-				<b-form-select v-model="selected" :options="options" class="mb-3" />
+			<b-form-select v-model="selected" :options="options" class="mb-3" />
 		</b-container>
 		<b-container>
 			<b-row>
@@ -26,16 +26,59 @@
         </b-container>
         
         <div>
-            <b-modal id="modal" v-bind:data="selected" ref="movieModal">
+            <b-modal id="modal" v-bind:data="selected" ref="movieModal" :ok-only="true">
                 <div v-if="selected !== null">
+                    <b-img class='image' :src="selected.multimedia.src" fluid alt="Fluid image" />
                     <h2>{{ selected.display_title }}</h2>
-                    <span>{{ selected.opening_date | formatDate }}</span><br><br>
-                    <p>{{ selected.summary_short }}</p>
+                    <div class='modal-section'>
+                        <span class='uppercase small-title'>Opening Date:</span>
+                        <p>{{ selected.opening_date | formatDate }}</p>
+                    </div>
+                    <div class='modal-section'>
+                        <span class='uppercase small-title'>Summary:</span>
+                        <p>{{ selected.summary_short }}</p>
+                    </div>
                 </div>
             </b-modal>
         </div>
     </div>
 </template>
+
+<style>
+    p { margin: 0; }
+    h2 { font-weight: bold; }
+
+    .modal-header {
+        padding: 10px 20px 0 !important;
+    }
+
+    .modal-body {
+        margin: 0;
+        padding: 10px 20px 0px !important;
+    }
+
+    .modal-section {
+        margin-top: 20px;
+    }
+
+    .image {
+        width: 100%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .small-title {
+        color: rgba(0, 0, 0, .65);
+        display: block;
+        line-height: 10px;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
 
 <script>
     import Vue from 'Vue';
@@ -59,7 +102,7 @@
                 selected: null,
                 options: [
                     //
-                ]
+                ],
             };
         },
         filters: {

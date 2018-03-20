@@ -11,6 +11,11 @@ export default {
 </script>
 
 <style>
+  body,
+  html {
+      font-family: 'IBM Plex Sans', 'Arial';
+  }
+
   a,
   button {
     color: #261447;
