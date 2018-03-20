@@ -26,8 +26,12 @@
         </b-container>
         
         <div>
-            <b-modal id="modal" title="Movie-Modal" ref="movieModal">
-                <p>Movie Info</p>
+            <b-modal id="modal" v-bind:data="selected" ref="movieModal">
+                <div v-if="selected !== null">
+                    <h2>{{ selected.display_title }}</h2>
+                    <span>{{ selected.opening_date | formatDate }}</span><br><br>
+                    <p>{{ selected.summary_short }}</p>
+                </div>
             </b-modal>
         </div>
     </div>
