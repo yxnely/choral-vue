@@ -6,10 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run build",
+    "start": "npm run dev",
     "test": "npm run unit",
-    "build": "node build/build.js",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
+    "build": "node build/build.js"
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.1",
