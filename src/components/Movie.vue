@@ -10,7 +10,7 @@
 		<b-container>
 			<b-row>
 				<b-col v-for="(movie, index) in movies"
-					v-bind:data="movie"
+					v-bind:data="movie.display_title"
 					v-bind:key="index"
 					sm="12"
 					cols="12"
