@@ -41,4 +41,4 @@ You're good to start playing around in the dev environment!
 > For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Current State
-![Screenshot of Movie View](https://raw.githubusercontent.com/yxnely/movie-vue/starter/src/assets/screen.gif)
+![Screenshot of Movie View](https://raw.githubusercontent.com/yxnely/movie-vue/master/src/assets/screen.gif)
