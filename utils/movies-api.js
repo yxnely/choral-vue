@@ -1,6 +1,6 @@
 const NY_TIMES_CONFIG = {
     url: 'https://api.nytimes.com/svc/movies/v2/reviews/search.json',
-    key: 'afbbea547c7a452fb7d6cce8307cbb19',
+    key: '',
 };
 
 const IMBD_CONFIG = {
