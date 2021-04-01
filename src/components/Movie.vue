@@ -4,9 +4,21 @@
             <app-nav></app-nav>
             <h1 class="text-center mt-2">Movies</h1>
 		</div>
-		<b-container>
+		<!-- <b-container>
 			<b-form-select v-model="selected" :options="options" class="mb-3" />
-		</b-container>
+		</b-container> -->
+        <b-container
+            sm="12"
+            cols="12"
+            md="6"
+            lg="4">
+            <b-form-input v-model="text" placeholder="Enter a search term"></b-form-input>
+            <div class="mt-2">Results for: {{ text }}</div>
+            <b-button 
+                variant="outline-primary" 
+                @click="getSearchedMovies(text)">Search</b-button>
+        </b-container>
+        <br>
 		<b-container>
 			<b-row>
 				<b-col v-for="(movie, index) in movies"
@@ -17,6 +29,9 @@
 					md="6"
 					lg="4">
 						<b-card class="mb-4" 
+                            v-bind:img-src="movie.multimedia.src"
+                            img-alt="Promotional image for movie"
+                            img-top
 							v-bind:title="movie.display_title"
 							v-bind:sub-title="movie.opening_date | formatDate">
 							<b-button variant="outline-secondary" @click="getThisMovie(index)">View More</b-button>
@@ -37,6 +52,10 @@
                     <div class='modal-section'>
                         <span class='uppercase small-title'>Summary:</span>
                         <p>{{ selected.summary_short }}</p>
+                    </div>
+                    <br>
+                    <div>
+                        <b-link class='card-link' target='_blank' v-bind:href="selected.link.url">{{ selected.link.suggested_link_text }}</b-link>
                     </div>
                 </div>
             </b-modal>
@@ -83,13 +102,17 @@
         font-size: 15px;
         font-weight: bold;
     }
+
+    .card-link {
+        text-decoration: underline;
+    }
 </style>
 
 <script>
     import Vue from 'Vue';
     import moment from 'moment';
     import AppNav from './AppNav';
-    import { getMovies } from '../../utils/movies-api';
+    import { getMovies, getSearchedMovies } from '../../utils/movies-api';
     import { FormSelect, Card, Button, Layout } from 'bootstrap-vue/es/components';
 
     export default {
@@ -108,6 +131,7 @@
                 options: [
                     //
                 ],
+                text: '',
             };
         },
         filters: {
@@ -138,6 +162,11 @@
             displayModal() {
                 this.$refs.movieModal.show();
             },
+            getSearchedMovies(text) {
+                getSearchedMovies(text).then((res) => {
+                    this.movies = res.results;
+                })
+            }
         },
         mounted() {
             this.getAllMovies();
