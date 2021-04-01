@@ -118,7 +118,16 @@
         methods: {
             getAllMovies() {
                 getMovies().then((res) => {
-                    this.movies = res.results;
+                    this.allMovies = res.results;
+                    this.movies = [];
+                    
+                    this.allMovies.forEach((movie) => {
+                        if (movie.display_title !== '') {
+                            this.movies.push(movie);
+                        }
+                    });
+
+                    return this.movies;
                 });
             },
             getThisMovie(idx) {
